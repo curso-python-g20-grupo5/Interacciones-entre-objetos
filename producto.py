@@ -20,9 +20,19 @@ class Producto:
     def stock(self):
         return self.__stock
 
-#se define el método modificar_stock, el cual modifica el stock sumando o restando una catidad determinada
-    def modificar_stock(self, cantidad):
-        self.__stock = max(0, self.__stock + cantidad) #se ingresa un stock 0 como valor mínimo ya que el stock no puede ser negativo
+    @stock.setter
+    def stock(self, valor):
+        self.__stock = max(0, valor)
 
-    def __eq__(self, other):
-        return self.__nombre == other.nombre #se comparan dos productos para ver si son iguales en su nombre
+    def __add__(self, cantidad):
+        self.stock += cantidad
+        return self
+
+    def __sub__(self, cantidad):
+        self.stock = max(0, self.stock - cantidad)
+        return self
+
+    def __eq__(self, otro):
+        if isinstance(otro, Producto):
+            return self.nombre == otro.nombre
+        return False

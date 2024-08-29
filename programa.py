@@ -9,18 +9,26 @@ def main():
     """
 
     print("Creación de una tienda")
-    tipo_tienda = input("Ingrese el tipo de tienda (restaurante, supermercado, farmacia): ").strip().lower()
+    print("Seleccione el tipo de tienda:")
+    print("1) Restaurante")
+    print("2) Supermercado")
+    print("3) Farmacia")
+
+    opcion_tienda = input(
+        "Ingrese el número correspondiente al tipo de tienda: "
+    ).strip()
+
     nombre = input("Ingrese el nombre de la tienda: ").strip()
     costo_delivery = float(input("Ingrese el costo de delivery: ").strip())
 
-    if tipo_tienda == "restaurante":
+    if opcion_tienda == "1":
         tienda = Restaurante(nombre, costo_delivery)
-    elif tipo_tienda == "supermercado":
+    elif opcion_tienda == "2":
         tienda = Supermercado(nombre, costo_delivery)
-    elif tipo_tienda == "farmacia":
+    elif opcion_tienda == "3":
         tienda = Farmacia(nombre, costo_delivery)
     else:
-        print("Tipo de tienda no válido.")
+        print("Opción no válida.")
         return
 
     while True:
@@ -31,7 +39,7 @@ def main():
 
         if opcion == "1":
             nombre_producto = input("Ingrese el nombre del producto: ").strip()
-            precio_producto = float(input("Ingrese el precio del producto: ").strip())
+            precio_producto = int(input("Ingrese el precio del producto: ").strip())
             stock_producto = int(input("Ingrese el stock del producto: ").strip())
             producto = Producto(nombre_producto, precio_producto, stock_producto)
             tienda.ingresar_producto(producto)
