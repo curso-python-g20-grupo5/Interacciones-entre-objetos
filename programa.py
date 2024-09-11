@@ -1,6 +1,7 @@
 from tienda import Restaurante, Supermercado, Farmacia
 from producto import Producto
 
+
 def main():
     """
     Función principal que maneja la interacción del usuario.
